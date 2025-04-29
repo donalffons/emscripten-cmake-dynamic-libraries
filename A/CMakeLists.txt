@@ -6,5 +6,7 @@ add_library(A SHARED
     src/a.h
 )
 
-target_link_options(A PRIVATE "-sSIDE_MODULE=1")
-target_compile_options(A PRIVATE "-sSIDE_MODULE=1")
+if(EMSCRIPTEN)
+    target_link_options(A PRIVATE "-sSIDE_MODULE=1")
+    target_compile_options(A PRIVATE "-sSIDE_MODULE=1")
+endif()

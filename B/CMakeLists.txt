@@ -9,5 +9,7 @@ add_library(B SHARED
 target_link_libraries(B PRIVATE A)
 target_include_directories(B PRIVATE ${CMAKE_SOURCE_DIR}/A/src)
 
-target_link_options(B PRIVATE "-sSIDE_MODULE=1")
-target_compile_options(B PRIVATE "-sSIDE_MODULE=1")
+if(EMSCRIPTEN)
+    target_link_options(B PRIVATE "-sSIDE_MODULE=1")
+    target_compile_options(B PRIVATE "-sSIDE_MODULE=1")
+endif()
